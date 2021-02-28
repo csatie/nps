@@ -6,7 +6,7 @@ import { UsersRepository } from '../repositories/UserRepository';
 
 class UserController {
   async create(request: Request, response: Response) {
-    const { name, email } = request.body;
+    const { name, email, gender, city, date_of_birth } = request.body;
 
     const schema = yup.object().shape({
       name: yup.string().required(),
@@ -30,6 +30,9 @@ class UserController {
     const user = usersRepository.create({
       name,
       email,
+      gender,
+      date_of_birth,
+      city,
     });
 
     await usersRepository.save(user);

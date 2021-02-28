@@ -18,8 +18,11 @@ class AnswerController {
       throw new AppError('survey user does not exists');
     }
 
-    surveyUser.value = Number(value);
+    if (surveyUser.value) {
+      throw new AppError('user already answered this survey');
+    }
 
+    surveyUser.value = Number(value);
     await surveysUsersRepository.save(surveyUser);
 
     return response.json(surveyUser);

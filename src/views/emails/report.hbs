@@ -1,0 +1,73 @@
+<style>
+  .container {
+    width: 800px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    columns: 3;
+    column-gap: 15px;
+  }
+
+  .container .box {
+    background: #f1f1f1;
+    padding: 150px;
+  }
+</style>
+<div class="container">
+  <h2>Resultados da pesquisa {{title}}</h2>
+
+  <div class="box">
+    <h3>Detractors</h3>
+
+    <strong>Total: </strong> {{detractors.total}}<br><br>
+    <strong>Gêneros: </strong> <br>
+    {{#each detractors.gender}}
+    {{@key}}: {{this}}<br>
+    {{/each}}<br><br>
+    <strong>Cidades: </strong> <br>
+    {{#each detractors.city}}
+    {{@key}}: {{this}}<br>
+    {{/each}}<br><br>
+    <strong>Data Nasc.: </strong> <br>
+    {{#each detractors.date_of_birth}}
+    {{@key}}: {{this}}<br>
+    {{/each}}<br><br>
+  </div>
+
+  <div class="box">
+    <h3>Promoters</h3>
+    <strong>Total: </strong> {{promoters.total}}<br><br>
+    <strong>Gêneros: </strong> <br>
+    {{#each promoters.gender}}
+    {{@key}}: {{this}}<br>
+    {{/each}}<br><br>
+    <strong>Cidades: </strong> <br>
+    {{#each promoters.city}}
+    {{@key}}: {{this}}<br>
+    {{/each}}<br><br>
+    <strong>Data Nasc.: </strong> <br>
+    {{#each promoters.date_of_birth}}
+    {{@key}}: {{this}}<br>
+    {{/each}}<br><br>
+
+  </div>
+  <div class="box">
+    <h3>Passives</h3>
+    <strong>Total: </strong> {{passives.total}}<br><br>
+    <strong>Gêneros: </strong> <br>
+    {{#each passives.gender}}
+    {{@key}}: {{this}}<br>
+    {{/each}}<br><br>
+    <strong>Cidades: </strong> <br>
+    {{#each passives.city}}
+    {{@key}}: {{this}}<br>
+    {{/each}}<br><br>
+    <strong>Data Nasc.: </strong> <br>
+    {{#each passives.date_of_birth}}
+    {{@key}}: {{this}}<br>
+    {{/each}}<br><br>
+
+  </div>
+
+
+</div>

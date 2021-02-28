@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { getCustomRepository, Not, IsNull } from 'typeorm';
 import { SurveysUsersRepository } from '../repositories/SurveysUsersRepository';
-import { UserCategoryController } from './UserCategoryController';
 
 class NpsController {
   async execute(request: Request, response: Response) {
@@ -12,7 +11,7 @@ class NpsController {
     const surveyUsers = await surveysUsersRepository.find({
       survey_id,
       value: Not(IsNull()),
-      relations: ['user'],
+      relations: ['user', 'survey'],
     });
 
     const detractors = { total: 0, gender: {}, city: {}, date_of_birth: {} };
@@ -43,7 +42,8 @@ class NpsController {
       ((promoters.total - detractors.total) / totalAnswers) * 100,
     ).toFixed(2);
 
-    return response.json({
+    return response.send({
+      title: surveyUsers[0].survey.title,
       detractors,
       promoters,
       passives,
